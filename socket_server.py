@@ -2,7 +2,6 @@ import datetime
 import socket
 import threading, time
 import os
-import json
 
 
 save_path = os.path.dirname(__file__)
@@ -23,19 +22,19 @@ def tcplink(sock, addr):
 
             file_name = os.path.join(save_path, addr[0]+'_'+date_today)
             with open(file_name, 'a+', encoding='utf-8') as f:
-                # print(json.loads(data))
                 f.write(data.decode('utf-8'))
                 f.write('\n'*2)
-        except Exception as e:
-            er_log_path = os.path.join(os.path.dirname(__file__), 'error_message.log')
-            with open(er_log_path, 'a+', encoding='utf-8') as f:
-                f.write('port %s get message error: %s \n' % (str(addr[1]), date_today))
-                f.write(repr(e))
-                f.write('\n'*3)
                 f.close()
-        
+        except Exception as e:
+            # er_log_path = os.path.join(os.path.dirname(__file__), 'error_message.log')
+            # with open(er_log_path, 'a+', encoding='utf-8') as error_f:
+            #     error_f.write('port %s get message error: %s \n' % (str(addr[1]), date_today))
+            #     error_f.write(repr(e))
+            #     error_f.write('\n'*3)
+            #     error_f.close()
+            pass
+
     sock.close()
-    f.close()
     print('Connection from %s:%s closed.' % addr)
 
 
@@ -60,7 +59,7 @@ if __name__ == '__main__':
             t.start()
         except Exception as e:
             er_log_path = os.path.join(os.path.dirname(__file__), 'error.log')
-            with open(er_log_path, 'a+', encoding='utf-8') as f:
-                f.write(repr(e))
-                f.write('\n'*2)
-                f.close()
+            with open(er_log_path, 'a+', encoding='utf-8') as ef:
+                ef.write(repr(e))
+                ef.write('\n'*2)
+                ef.close()
