@@ -5,7 +5,7 @@ def connect_sqlserver():
     # 连接数据库
     try:
         conn = pymssql.connect(
-            host='localhost',
+            host='139.9.147.35',
             user='sa',
             password='scwj.123',
             database='test_db'
