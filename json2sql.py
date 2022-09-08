@@ -108,7 +108,7 @@ def json2sql(json_data):
     if device_id == devices[2]:
         insert_data = insert_water % (hash_id, deviceID_new[devices.index(device_id)], 0.0, device_data[0]['data'], device_time, 0, update_time)
     # 构造电量数据
-    insert_elec_vol = insert_elec % (hash_id, deviceID_new[devices.index(device_id)], device_elec, device_time, 20)
+    insert_elec_vol = insert_elec % ("'"+str(hash_id)+"'", "'"+str(deviceID_new[devices.index(device_id)])+"'", "'"+str(device_elec)+"'", "'"+str(device_time)+"'", "'20'")
     
     # 将数据写入数据库
     try:
