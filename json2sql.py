@@ -106,8 +106,7 @@ def json2sql(json_data):
         insert_data = insert_spec % (deviceID_new[devices.index(device_id)], device_time, dp1, dp8)
     # 构造流速数据
     if device_id == devices[2]:
-        water_id = hash_code(hash_key, device_id+str(device_time))
-        insert_data = insert_water % (water_id, deviceID_new[devices.index(device_id)], 0.0, device_data[0]['data'], device_time, 0, update_time)
+        insert_data = insert_water % (hash_id, deviceID_new[devices.index(device_id)], 0.0, device_data[0]['data'], device_time, 0, update_time)
     # 构造电量数据
     insert_elec_vol = insert_elec % (hash_id, deviceID_new[devices.index(device_id)], device_elec, device_time, 20)
     
